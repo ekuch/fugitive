@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FugitiveServer", "FugitiveServer\FugitiveServer.csproj", "{D0A017DA-05EA-4526-BF0F-8173493408CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FugitiveModel", "FugitiveModel\FugitiveModel.csproj", "{3C5E5E96-CC14-4B48-955F-B773D6F540F1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D0A017DA-05EA-4526-BF0F-8173493408CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0A017DA-05EA-4526-BF0F-8173493408CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0A017DA-05EA-4526-BF0F-8173493408CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0A017DA-05EA-4526-BF0F-8173493408CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C5E5E96-CC14-4B48-955F-B773D6F540F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C5E5E96-CC14-4B48-955F-B773D6F540F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C5E5E96-CC14-4B48-955F-B773D6F540F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C5E5E96-CC14-4B48-955F-B773D6F540F1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
