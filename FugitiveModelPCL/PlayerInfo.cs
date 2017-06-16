@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace FugitiveModel
 {
@@ -14,6 +15,11 @@ namespace FugitiveModel
                 ids.Add(card.Hideout);
             }
             return ids;
+        }
+
+        public static PlayerInfo fromJson(string json)
+        {
+            return JsonConvert.DeserializeObject<PlayerInfo>(json);
         }
     }
 }

@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FugitiveClient.BoardStateContentPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{Binding PlayersTurn, StringFormat='CurrentPlayer: {0}'}" />
+            <Label Text="{Binding TurnAction, StringFormat='CurrentStage:  {0}'}" />
+            <Button Text="Join Game" Command="{Binding JoinNameCommand}" />
+            <Button Text="Refresh" Command="{Binding Refresh}" />
+            <Label Text="Draw Cards Left" />
+            <Grid Padding="15">
+                <Grid.RowDefinitions>
+                    <RowDefinition  Height="Auto"/>
+                    <RowDefinition  Height="Auto" />
+                    <RowDefinition  Height="Auto"/>
+                    <RowDefinition  Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Column="1" Grid.Row="1" Text="4-14" />
+                <Label Grid.Column="2" Grid.Row="1" Text="{Binding CardsLeftFourToFourteen}" />
+                <Button Text="Draw" Grid.Column="3" Grid.Row="1" Command="{Binding DrawFourToFourteenCommand}" />
+                <Label Grid.Column="1" Grid.Row="2" Text="15-28" />
+                <Label Grid.Column="2" Grid.Row="2" Text="{Binding CardsLeftFifteenToTwentyEight}" />
+                <Button Text="Draw" Grid.Column="3" Grid.Row="2" Command="{Binding DrawFifteenToTwentyEightCommand}" />
+                <Label Grid.Column="1" Grid.Row="3" Text="29-41" />
+                <Label Grid.Column="2" Grid.Row="3" Text="{Binding CardsLeftTwentyNineToFourtyOne}" />
+                <Button Text="Draw" Grid.Column="3" Grid.Row="3" Command="{Binding DrawTwentyNineToFourtyOneCommand}" />
+                <Label Grid.Column="1" Grid.Row="4" Text="" />
+                <Label Grid.Column="2" Grid.Row="4" Text="" />
+            </Grid>
+            <Label Text="Hideout Stages" />
+            <ListView  ItemsSource="{Binding HideoutPath}"
+        GroupDisplayBinding="{Binding Hideout.Hideout}"
+        IsGroupingEnabled="true">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout>
+                                <Label Text="{Binding Hideout, StringFormat='Hideout: {0}'}" />
+                                <Label Text="{Binding Steps, StringFormat='Steps: {0}'}" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Grid IsVisible="{Binding IsMarshal}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition  Height="Auto"/>
+                    <RowDefinition  Height="*"/>
+                    <RowDefinition  Height="Auto"/>
+                    <RowDefinition  Height="*"/>
+                </Grid.RowDefinitions>
+                <ListView Grid.Column="0" Grid.RowSpan="4" Grid.Row="0" Grid.ColumnSpan="4" ItemsSource="{Binding Hand}" SelectedItem="{Binding SelectedHandCard, Mode=TwoWay}" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout>
+                                    <Label Text="{Binding Hideout, StringFormat='Hideout: {0}'}" />
+                                    <Label Text="{Binding Steps, StringFormat='Steps: {0}'}" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Text="Guess Hideout" Grid.Column="1" Grid.Row="0" Command="{Binding GuessHideoutCommand}" />
+                <Button Text="Pass" Grid.Column="1" Grid.Row="2"  Command="{Binding PassCommand}" />
+            </Grid>
+            <Grid IsVisible="{Binding IsFugitive}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition  Height="Auto"/>
+                    <RowDefinition  Height="Auto"/>
+                    <RowDefinition  Height="Auto" />
+                    <RowDefinition  Height="Auto"/>
+                    <RowDefinition  Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Label Text="{Binding PreviousHidout.Hideout, StringFormat='Previous Hideout: {0}'}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" />
+                <ListView Grid.Column="0" Grid.RowSpan="4"  ItemsSource="{Binding Hand}" SelectedItem="{Binding SelectedHandCard, Mode=TwoWay}" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout>
+                                    <Label Text="{Binding Hideout, StringFormat='Hideout: {0}'}" />
+                                    <Label Text="{Binding Steps, StringFormat='Steps: {0}'}" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Text="Set Hideout" Grid.Column="1" Grid.Row="1" Command="{Binding SetHideoutCommand}" />
+                <Button Text="Add Steps" Grid.Column="1" Grid.Row="2" Command="{Binding AddStepsCommand}" />
+                <Button Text="Remove Steps" Grid.Column="1" Grid.Row="3" Command="{Binding RemoveStepsCommand}"/>
+                <Label Grid.Column="2" Grid.Row="1" Text="{Binding Hideout.Hideout}" />
+                <ListView Grid.Column="2" Grid.Row="2" Grid.RowSpan="3"  ItemsSource="{Binding StepCards}" SelectedItem="{Binding SelectedStepCard, Mode=TwoWay}" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout>
+                                    <Label Text="{Binding Hideout, StringFormat='Hideout: {0}'}" />
+                                    <Label Text="{Binding Steps, StringFormat='Steps: {0}'}" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Text="Play Hideout" Grid.Column="3" Grid.Row="1" Command="{Binding PlayHideoutCommand}" />
+                <Button Text="Pass" Grid.Column="3" Grid.Row="3"  Command="{Binding PassCommand}" />
+            </Grid>
+            <Label Text="Welcome to Xamarin Forms!" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

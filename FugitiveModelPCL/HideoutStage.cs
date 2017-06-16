@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace FugitiveModel
 {
@@ -85,11 +86,16 @@ namespace FugitiveModel
                 extraSteps += card.Hideout;
             }
 
-            if (previousHideout + extraSteps + 3 <= Hideout.Hideout)
+            if (previousHideout + extraSteps + 3 >= Hideout.Hideout)
             {
                 return true;
             }
             return false;
+        }
+
+        public string ToJson()
+        {
+            return JsonConvert.SerializeObject(this);
         }
     }
 }

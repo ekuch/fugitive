@@ -17,6 +17,14 @@ namespace FugitiveServer.Controllers
         public FugitiveController()
         {
         }
+
+        // GET api/values
+        [HttpGet("join")]
+        public string JoinGame()
+        {
+            return instance.JoinGame();
+        }
+
         // GET api/values
         [HttpGet("board/state")]
         public BoardState GetBoardState()

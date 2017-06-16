@@ -188,6 +188,9 @@ namespace FugitiveServer
             _BoardState = new BoardState();
             _BoardState.HideoutPath = new LinkedList<HideoutStage>();
             HideoutStage initialStage = new HideoutStage(new HideoutCard(1), new LinkedList<HideoutCard>());
+            // TODO Remove customization to initialStage.
+            initialStage.ExtraSteps.AddLast(new HideoutCard(21));
+            initialStage.ExtraSteps.AddLast(new HideoutCard(46));
             initialStage.IsVisible = true;
             _BoardState.HideoutPath.AddLast(initialStage);
             _BoardState.PlayersTurn = Role.Fugitive;
@@ -203,10 +206,9 @@ namespace FugitiveServer
             _InitialFugitiveDraws = 2;
             _InitialFugitiveHideouts = 2;
 
-            // TODO Remove these
+#if false
             JoinGame();
             JoinGame();
-#if DEBUG
             _BoardState.Comment = "";
             foreach(String playerId in _PlayerInfo.Keys)
             {
@@ -273,6 +275,7 @@ namespace FugitiveServer
 
                 HideoutCard card = _DrawCards[cardType].Last.Value;
                 _DrawCards[cardType].RemoveLast();
+                _BoardState.DrawCardsLeft[cardType]--;
 
                 playerInfo.Hand.Add(card);
 

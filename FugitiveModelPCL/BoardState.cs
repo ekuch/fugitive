@@ -7,6 +7,11 @@ namespace FugitiveModel
 {
     public class BoardState
     {
+        public static BoardState fromJson(string json)
+        {
+            return JsonConvert.DeserializeObject<BoardState>(json);
+        }
+
         public LinkedList<HideoutStage> HideoutPath { get; set; }
         public Dictionary<CardType, int> DrawCardsLeft { get; set; }
         
